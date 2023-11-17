@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+# coding: UTF-8
+
+import binascii
+import os
+import re
+import sys
+
+target_path = sys.argv[1]
+target_data = None
+with open(target_path, 'rb') as target_file:
+    target_data = binascii.hexlify(target_file.read()).decode('utf-8')
+
+
+result_path = f'{target_path}_patched'
+with open(result_path, "wb") as result_file:
+    if sys.version_info[0] >= 3:
+        result_file.write(bytes.fromhex(target_data))
+    else:
+        result_file.write(target_data.decode("hex"))
+
+print(f"Successfully generated patched binary to '{result_path}'")
