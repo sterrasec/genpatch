@@ -13,10 +13,10 @@ with open(target_path, 'rb') as target_file:
 
 
 result_path = f'{target_path}_patched'
-with open(result_path, "wb") as result_file:
+with open(result_path, 'wb') as result_file:
     if sys.version_info[0] >= 3:
         result_file.write(bytes.fromhex(target_data))
     else:
-        result_file.write(target_data.decode("hex"))
+        result_file.write(target_data.decode('hex'))
 
 print(f"Successfully generated patched binary to '{result_path}'")
