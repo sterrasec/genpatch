@@ -1,9 +1,11 @@
 # genpatch
-genpatch is IDA plugin that generates a python script for patching binary from `Patched Byte` on IDA.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/sterrasec/genpatch/blob/master/LICENSE)
+
+genpatch is IDA plugin that generates a python script for patching binary from `Patched Byte` on IDA Pro.
 genpatch is confirmed to work on IDA Pro 7.4 and above
 
 ## Background
-During reverse engineering, we often apply the same patch to another binary. For example, when applying patch for bypassing SSL pinning. Launching IDA just to patch is cumbersome, but patching from the CUI is more convenient, it's easy to share with others who are not familiar with IDA.
+During reverse engineering, we often apply the same patch to another binary. For example, when applying patch for bypassing SSL pinning. Launching IDA Pro just to patch is cumbersome, but patching from the CUI is more convenient, it's easy to share with others who are not familiar with IDA Pro.
 
 # Installation
 Copy file `genpatch.py`, `patch_script_template.txt` to IDA Plugin folder, then restart IDA Pro to use genpatch.
@@ -13,13 +15,25 @@ Copy file `genpatch.py`, `patch_script_template.txt` to IDA Plugin folder, then 
 - On Linux, the folder may be at /opt/IDA/plugins/
 
 # How to Use
-After applying the patch using IDA, click `Edit -> Plugins -> genpatch` button.
+## Generate Patch Script
+After applying the patch using IDA Pro, click `Edit -> Plugins -> genpatch` button.
 
 ![usage](./screenshots/usage.png)
 
 If patch script is successfully generated, a dialog similar to following appears:
 
 ![dialog](./screenshots/dialog.png)
+
+A Patch script is generated in the directory where the binary read on IDA Pro is located.
+The name of the Patch script will be the binary you are reading with the suffix `_patch.py`.
+For example, if the binary name is `a.out`, the patch script name will be `a.out_patch.py`.
+
+## Run the generated patch script
+Specify the path to the binary you wish to patch as a command line argument.
+
+```bash
+$ python foo_patch.py <target_binary_path>
+```
 
 ## Patching Script Example
 
