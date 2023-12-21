@@ -4,7 +4,7 @@
 genpatch is IDA plugin that generates a python script for patching binary from `Patched Byte` on IDA Pro.
 genpatch is confirmed to work on IDA Pro 7.4 and above
 
-## Background
+## Motivation
 During reverse engineering, we often apply the same patch to another binary. For example, when applying patch for bypassing SSL pinning. Launching IDA Pro just to patch is cumbersome, but patching from the CUI is more convenient, it's easy to share with others who are not familiar with IDA Pro.
 
 # Installation
